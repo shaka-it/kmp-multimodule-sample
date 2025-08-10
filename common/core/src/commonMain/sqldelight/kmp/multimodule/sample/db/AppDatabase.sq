@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS PostEntity (
+    id TEXT PRIMARY KEY,
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    author TEXT NOT NULL
+);
+
+selectAll:
+SELECT *
+FROM PostEntity;
+
+insert:
+INSERT INTO PostEntity (id, title, description, author)
+VALUES (?, ?, ?, ?);
+
+deleteAll:
+DELETE FROM PostEntity;

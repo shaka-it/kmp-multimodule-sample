@@ -1,0 +1,7 @@
+TEAM_ID=
+
+PRODUCT_NAME=kmp-multimodule-project
+PRODUCT_BUNDLE_IDENTIFIER=kmp.multimodule.project.kmp-multimodule-project$(TEAM_ID)
+
+CURRENT_PROJECT_VERSION=1
+MARKETING_VERSION=1.0
