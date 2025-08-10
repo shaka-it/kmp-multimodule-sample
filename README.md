@@ -91,20 +91,20 @@ User flows, data access, UI and navigation are all implemented in Kotlin, maximi
 
 **Desktop:**
 
-<img width="717" height="591" alt="Desktop" src="https://github.com/user-attachments/assets/95cf47d5-0b36-4dd8-9dea-0b40c6405b5a" />
+<img width="717" height="591" alt="desktop" src="https://github.com/user-attachments/assets/72aa5b65-0a4b-4a9f-a40c-8604dc523418" />
 
 **Web:**
 
-<img width="844" height="653" alt="Web" src="https://github.com/user-attachments/assets/fe1688a5-dad2-4784-8ce1-58c212b1df94" />
+<img width="844" height="653" alt="web" src="https://github.com/user-attachments/assets/c4f3bfb5-5a14-4d57-b14f-547f7a5ccc68" />
 
 **Ios:**
 
-<img width="430" height="893" alt="Ios" src="https://github.com/user-attachments/assets/82a37979-8881-4f12-bb39-adb26857e335" />
+<img width="430" height="893" alt="ios" src="https://github.com/user-attachments/assets/0c1bf788-b6df-4130-9401-50905522a0d7" />
 
 **Android:**
 
-<img width="456" height="936" alt="Android" src="https://github.com/user-attachments/assets/e89a5f14-33c8-402d-94d0-531710f0e91d" />
+<img width="456" height="936" alt="android" src="https://github.com/user-attachments/assets/9a6d641f-5892-4811-9e64-b61473f48fac" />
 
 **Server:**
 
-<img width="1114" height="973" alt="Server" src="https://github.com/user-attachments/assets/5bee75bb-3ea1-4729-b633-8822d250d8bc" />
+<img width="1114" height="973" alt="server" src="https://github.com/user-attachments/assets/f763245a-5946-488b-8682-87674545b948" />
