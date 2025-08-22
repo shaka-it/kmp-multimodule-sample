@@ -6,6 +6,6 @@ RUN gradle :server:shadowJar --no-daemon
 FROM eclipse-temurin:21-jre
 WORKDIR /app
 ENV PORT=8080
-EXPOSE 8080
+EXPOSE 8000
 COPY --from=build /app/server/build/libs/*.jar /app/app.jar
 CMD ["java","-jar","/app/app.jar"]
