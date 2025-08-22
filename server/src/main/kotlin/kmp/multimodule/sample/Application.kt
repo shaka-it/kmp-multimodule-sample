@@ -13,7 +13,7 @@ import kmp.multimodule.sample.plugins.configureSerialization
 fun main() {
     embeddedServer(
         factory = Netty,
-        port = SERVER_PORT,
+        port = System.getenv("SERVER_PORT").toInt(),
         module = Application::module,
     ).start(wait = true)
 }

@@ -1,15 +1,17 @@
 package kmp.multimodule.sample.plugins
 
-import kmp.multimodule.sample.POSTGRES_PASSWORD
-import kmp.multimodule.sample.POSTGRES_URL
-import kmp.multimodule.sample.POSTGRES_USER
+import com.zaxxer.hikari.HikariConfig
+import com.zaxxer.hikari.HikariDataSource
 import org.jetbrains.exposed.sql.Database
 
 fun configureDatabase() {
-    Database.connect(
-        url = POSTGRES_URL,
-        driver = "org.postgresql.Driver",
-        user = POSTGRES_USER,
-        password = POSTGRES_PASSWORD,
-    )
+    val config = HikariConfig().apply {
+        jdbcUrl = System.getenv("DATABASE_CONNECTION_STRING")
+        username = System.getenv("POSTGRES_USER")
+        password = System.getenv("POSTGRES_PASSWORD")
+        driverClassName = "org.postgresql.Driver"
+        maximumPoolSize = System.getenv("DB_POOL_SIZE").toInt()
+        isAutoCommit = false
+    }
+    Database.connect(HikariDataSource(config))
 }
