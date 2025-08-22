@@ -1,5 +1,13 @@
-FROM openjdk:11
-EXPOSE 8080:8080
-RUN mkdir /app
-COPY build/libs/*.jar /app/app.jar
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+# ---------- build stage ----------
+FROM gradle:8.7-jdk-21 AS build
+WORKDIR /app
+COPY .. .
+RUN gradle :server:shadowJar --no-daemon
+
+# ---------- runtime stage ----------
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+ENV PORT=8080
+EXPOSE 8080
+COPY --from=build /app/server/build/libs/*.jar /app/app.jar
+CMD ["java","-jar","/app/app.jar"]

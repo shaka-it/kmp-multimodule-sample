@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.ktor)
     alias(libs.plugins.sqldelight)
     alias(libs.plugins.serialization)
+    alias(libs.plugins.gradle.shadow)
     application
 }
 
