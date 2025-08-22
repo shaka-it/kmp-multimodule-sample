@@ -1,4 +1,4 @@
-FROM gradle:8.7.0-jdk21 AS build
+FROM gradle:8.14.3-jdk21 AS build
 WORKDIR /app
 COPY . .
 RUN gradle :server:shadowJar --no-daemon
