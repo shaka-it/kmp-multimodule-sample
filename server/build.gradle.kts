@@ -20,28 +20,6 @@ application {
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
 
-ktor {
-    docker {
-        jreVersion.set(JavaVersion.VERSION_21)
-        localImageName.set("kmp-sample-docker-image")
-        imageTag.set("0.0.1-preview")
-
-        portMappings.set(
-            listOf(
-                DockerPortMapping(
-                    outsideDocker = 80,
-                    insideDocker = 8080,
-                    DockerPortMappingProtocol.TCP,
-                )
-            )
-        )
-    }
-
-    fatJar {
-        archiveFileName.set("fat.jar")
-    }
-}
-
 dependencies {
     implementation(libs.logback)
 
