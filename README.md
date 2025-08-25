@@ -78,7 +78,7 @@ User flows, data access, UI and navigation are all implemented in Kotlin, maximi
 ---
 
 ## Tech Stack
-- **Language:** Kotlin 1.x, Kotlin Multiplatform
+- **Language:** Kotlin
 - **UI:** Compose Multiplatform, Decompose (navigation)
 - **DI:** Koin
 - **Networking:** Ktor client & server
