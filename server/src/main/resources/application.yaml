@@ -1,0 +1,15 @@
+ktor:
+  application:
+    modules:
+      - kmp.multimodule.sample.ApplicationKt.module
+
+  deployment:
+    port: "$PORT:8080"
+
+  db:
+    image: "$POSTGRES_IMAGE:postgres:latest"
+    port: "$POSTGRES_PORT:5432"
+    username: "$POSTGRES_USER:postgres"
+    password: "$POSTGRES_PASSWORD:postgres"
+    jdbcUrl: "$POSTGRES_JDBC_URL:jdbc:postgresql://localhost:5432/app"
+    poolSize: "$DB_POOL_SIZE:5"

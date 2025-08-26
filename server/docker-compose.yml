@@ -1,19 +1,15 @@
-version: "1"
 services:
   server:
     build: .
     ports:
-      - "${SERVER_PORT}:${SERVER_PORT}"
+      - "${PORT}:${PORT}"
     environment:
-      - SERVER_PORT=$SERVER_PORT
-      - DATABASE_CONNECTION_STRING=$DATABASE_CONNECTION_STRING
-      - POSTGRES_USER=$POSTGRES_USER
-      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      PORT: $PORT
+      POSTGRES_JDBC_URL: $POSTGRES_JDBC_URL
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
     depends_on:
       - db
-    networks:
-      - db_network
-    restart: always
 
   db:
     image: ${POSTGRES_IMAGE}
@@ -23,13 +19,3 @@ services:
       POSTGRES_DB: "kmp-sample"
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
-    volumes:
-      - ./db-data:/var/lib/postgresql/data
-      - ./sql/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
-    networks:
-      - db_network
-    restart: always
-
-networks:
-  db_network:
-    driver: bridge

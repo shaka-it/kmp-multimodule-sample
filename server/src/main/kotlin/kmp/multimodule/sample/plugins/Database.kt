@@ -2,15 +2,18 @@ package kmp.multimodule.sample.plugins
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
+import io.ktor.server.application.Application
 import org.jetbrains.exposed.sql.Database
 
-fun configureDatabase() {
+fun Application.configureDatabase() {
     val config = HikariConfig().apply {
-        jdbcUrl = System.getenv("DATABASE_CONNECTION_STRING")
-        username = System.getenv("POSTGRES_USER")
-        password = System.getenv("POSTGRES_PASSWORD")
+        val db = environment.config.config("ktor.db")
+
+        jdbcUrl = db.property("jdbcUrl").getString()
+        username = db.property("user").getString()
+        password = db.property("password").getString()
         driverClassName = "org.postgresql.Driver"
-        maximumPoolSize = System.getenv("DB_POOL_SIZE").toInt()
+        maximumPoolSize = db.property("poolSize").getString().toInt()
         isAutoCommit = false
     }
     Database.connect(HikariDataSource(config))

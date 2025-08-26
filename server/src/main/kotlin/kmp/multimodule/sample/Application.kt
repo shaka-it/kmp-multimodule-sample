@@ -1,8 +1,7 @@
 package kmp.multimodule.sample
 
 import io.ktor.server.application.Application
-import io.ktor.server.engine.embeddedServer
-import io.ktor.server.netty.Netty
+import io.ktor.server.netty.EngineMain
 import kmp.multimodule.sample.features.login.configureLoginRouting
 import kmp.multimodule.sample.features.post.configurePostsRouting
 import kmp.multimodule.sample.features.register.configureRegisterRouting
@@ -10,13 +9,7 @@ import kmp.multimodule.sample.plugins.configureDatabase
 import kmp.multimodule.sample.plugins.configureRouting
 import kmp.multimodule.sample.plugins.configureSerialization
 
-fun main() {
-    embeddedServer(
-        factory = Netty,
-        port = System.getenv("PORT").toIntOrNull() ?: System.getenv("SERVER_PORT").toInt(),
-        module = Application::module,
-    ).start(wait = true)
-}
+fun main(args: Array<String>) = EngineMain.main(args)
 
 fun Application.module() {
     configureDatabase()
