@@ -34,8 +34,6 @@ User flows, data access, UI and navigation are all implemented in Kotlin, maximi
 ### Root Modules
 - **`build-logic`**  
   Custom Gradle plugins and shared build scripts (Conventions, ComposeSetup, ModuleSetup).
-- **`convention`**  
-  Internal convention plugin applying common settings across modules.
 
 ### Common Multiplatform Modules (`common`)
 - **`common:core`**  
@@ -70,10 +68,7 @@ User flows, data access, UI and navigation are all implemented in Kotlin, maximi
 ### Server
 - **`server`**  
   Ktor-based backend exposing REST endpoints.  
-  Persistence via PostgreSQL using JetBrains **Exposed** modules:
-  - `exposed-core` for DSL
-  - `exposed-dao` for Active-Record style
-  - `exposed-jdbc` for JDBC integration
+  Persistence via PostgreSQL using JetBrains **Exposed** modules
 
 ---
 
