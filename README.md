@@ -89,23 +89,13 @@ User flows, data access, UI and navigation are all implemented in Kotlin, maximi
 
 ## 📸 UX
 
-**Android:**
+**Client:**
 
-<img width="456" height="936" alt="android" src="https://github.com/user-attachments/assets/9a6d641f-5892-4811-9e64-b61473f48fac" />
+<img width="1920" height="1080" alt="KMP 001" src="https://github.com/user-attachments/assets/0c28e6e4-5287-444d-87d2-064f9f966a38" />
+
+**Demo video:**
 
 https://github.com/user-attachments/assets/a7770320-2bc3-41b1-8f3d-f9559dcd4aab
-
-**Desktop:**
-
-<img width="717" height="591" alt="desktop" src="https://github.com/user-attachments/assets/72aa5b65-0a4b-4a9f-a40c-8604dc523418" />
-
-**Web:**
-
-<img width="844" height="653" alt="web" src="https://github.com/user-attachments/assets/c4f3bfb5-5a14-4d57-b14f-547f7a5ccc68" />
-
-**Ios:**
-
-<img width="430" height="893" alt="ios" src="https://github.com/user-attachments/assets/0c1bf788-b6df-4130-9401-50905522a0d7" />
 
 **Server:**
 
