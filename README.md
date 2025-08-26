@@ -13,6 +13,7 @@ A fully modular Kotlin Multiplatform (KMP) project showcasing:
 1. [Project Overview](#project-overview)
 2. [Architecture & Modules](#architecture--modules)
 3. [Tech Stack](#tech-stack)
+4. [Server Startup (Local)](#server-startup-local)
 
 ---
 
@@ -79,6 +80,45 @@ User flows, data access, UI and navigation are all implemented in Kotlin, maximi
 - **Networking:** Ktor client & server
 - **Database:** SQLDelight (local), Exposed + PostgreSQL (server)
 - **Build:** Gradle, custom convention plugins
+
+---
+
+## Server Startup (Local)
+
+### Requirements
+- Docker & Docker Compose installed
+
+### 1) Create your env file
+```bash
+cp .env.example .env
+```
+Open `.env` and set the variables you need.  
+You can point to **any** PostgreSQL instance (e.g., a managed service) or run a local Postgres via Compose.
+
+> `.env` is automatically read by `docker-compose` at the project root.
+
+### 2) Start the stack
+**Console:**
+```bash
+docker compose up --build -d
+# tail logs if needed
+docker compose logs -f server
+```
+
+**IDE (Android Studio/IntelliJ):**
+1. Open `docker-compose.yml` (root).
+2. Click the green “Run” button to start services.
+
+### 3) Stop / clean up
+```bash
+docker compose down         # stop & remove containers
+# docker compose down -v    # also remove volumes (local DB data)
+```
+
+### Notes
+- `Dockerfile` inside `server/` is used by Compose for local runs and can be used by **any** cloud that builds from a Dockerfile (examples: Koyeb, Render, Fly.io).
+- If you prefer a local Postgres, keep the `db` service enabled in `docker-compose.yml` and fill the “Local DB” variables in `.env`.  
+  If you use an external DB, you can run only the `server` service and set the external JDBC URL/user/password.
 
 ---
 
