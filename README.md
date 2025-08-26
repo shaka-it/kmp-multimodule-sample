@@ -91,7 +91,3 @@ User flows, data access, UI and navigation are all implemented in Kotlin, maximi
 **Demo video:**
 
 https://github.com/user-attachments/assets/a7770320-2bc3-41b1-8f3d-f9559dcd4aab
-
-**Server:**
-
-<img width="1114" height="973" alt="server" src="https://github.com/user-attachments/assets/f763245a-5946-488b-8682-87674545b948" />
