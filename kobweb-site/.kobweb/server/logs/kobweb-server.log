@@ -1,6 +1,6 @@
-2025-09-04 22:41:55.975 [main] DEBUG io.ktor.server.Application - Java Home: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents
-2025-09-04 22:41:55.975 [main] DEBUG io.ktor.server.Application - Class Loader: jdk.internal.loader.ClassLoaders$AppClassLoader@2c854dc5: [file:/Users/shaka/StudioProjects/kmp-multimodule-sample/kobweb-site/.kobweb/server/server.jar!/okio]
-2025-09-04 22:41:55.986 [main] DEBUG io.ktor.server.Application - Failed to load module 'com.varabyte.kobweb.server.ApplicationKt$main$engine$1.invoke' by classpath reference, falling back to currently loaded value
+2025-09-04 22:57:24.020 [main] DEBUG io.ktor.server.Application - Java Home: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents
+2025-09-04 22:57:24.021 [main] DEBUG io.ktor.server.Application - Class Loader: jdk.internal.loader.ClassLoaders$AppClassLoader@2c854dc5: [file:/Users/shaka/StudioProjects/kmp-multimodule-sample/kobweb-site/.kobweb/server/server.jar!/okio]
+2025-09-04 22:57:24.033 [main] DEBUG io.ktor.server.Application - Failed to load module 'com.varabyte.kobweb.server.ApplicationKt$main$engine$1.invoke' by classpath reference, falling back to currently loaded value
 io.ktor.server.engine.internal.ReloadingException: Module function cannot be found for the fully qualified name 'com.varabyte.kobweb.server.ApplicationKt$main$engine$1.invoke'
 	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:68)
 	at io.ktor.server.engine.EmbeddedServer$launchModuleByName$2.invokeSuspend(EmbeddedServerJvm.kt:443)
@@ -46,9 +46,52 @@ io.ktor.server.engine.internal.ReloadingException: Module function cannot be fou
 	at kotlin.coroutines.ContinuationKt.startCoroutine(Continuation.kt:115)
 	at kotlin.coroutines.jvm.internal.RunSuspendKt.runSuspend(RunSuspend.kt:19)
 	at com.varabyte.kobweb.server.ApplicationKt.main(Application.kt)
-2025-09-04 22:41:55.987 [main] INFO  io.ktor.server.Application - Initializing server engine for Kobweb project "App"
-2025-09-04 22:41:55.988 [main] WARN  io.ktor.server.Application - API jar specified but does not exist! Please fix conf.yaml, updating the path (or removing the value if you aren't declaring API endpoints). Invalid path: "build/libs/sample.jar"
-2025-09-04 22:41:56.014 [main] INFO  io.ktor.server.Application - CORS: No hosts registered.
-2025-09-04 22:41:56.024 [main] INFO  io.ktor.server.Application - Application started in 0.12 seconds.
-2025-09-04 22:41:56.074 [main] INFO  io.ktor.server.Application - Responding at http://0.0.0.0:8080
-2025-09-04 22:43:03.041 [DefaultDispatcher-worker-2] DEBUG io.ktor.server.Application - Served fallback index.html file in response to "/.well-known/appspecific/com.chrome.devtools.json"
+2025-09-04 22:57:24.034 [main] INFO  io.ktor.server.Application - Initializing server engine for Kobweb project "App"
+2025-09-04 22:57:24.035 [main] WARN  io.ktor.server.Application - API jar specified but does not exist! Please fix conf.yaml, updating the path (or removing the value if you aren't declaring API endpoints). Invalid path: "build/libs/sample.jar"
+2025-09-04 22:57:24.062 [main] INFO  io.ktor.server.Application - CORS: No hosts registered.
+2025-09-04 22:57:24.072 [main] INFO  io.ktor.server.Application - Application started in 0.122 seconds.
+2025-09-04 22:57:24.123 [main] INFO  io.ktor.server.Application - Responding at http://0.0.0.0:8080
+2025-09-04 22:57:31.768 [DefaultDispatcher-worker-3] DEBUG io.ktor.server.Application - Served fallback index.html file in response to "/.well-known/appspecific/com.chrome.devtools.json"
+2025-09-04 22:58:28.906 [eventLoopGroupProxy-4-2] DEBUG io.ktor.server.Application - Served fallback index.html file in response to "/"
+2025-09-04 22:58:29.480 [DefaultDispatcher-worker-3] DEBUG io.ktor.server.Application - Client connected and is requesting kobweb status events.
+2025-09-04 22:58:36.760 [DefaultDispatcher-worker-3] DEBUG io.ktor.server.Application - Served fallback index.html file in response to "/.well-known/appspecific/com.chrome.devtools.json"
+2025-09-04 23:01:35.320 [DefaultDispatcher-worker-3] DEBUG io.ktor.server.Application - Served fallback index.html file in response to "/demo"
+2025-09-04 23:01:36.086 [DefaultDispatcher-worker-2] DEBUG io.ktor.server.Application - Client connected and is requesting kobweb status events.
+2025-09-04 23:02:29.511 [DefaultDispatcher-worker-4] DEBUG io.ktor.server.Application - Stopped sending kobweb status events, probably because client disconnected or server is shutting down. (JobCancellationException: Parent job is Cancelling)
+2025-09-04 23:02:29.512 [DefaultDispatcher-worker-4] DEBUG io.ktor.server.Application - 200 OK: GET - /api/kobweb-status. Exception class kotlinx.coroutines.JobCancellationException: Parent job is Cancelling
+kotlinx.coroutines.JobCancellationException: Parent job is Cancelling
+Caused by: io.ktor.utils.io.ClosedWriteChannelException: Cannot write to channel
+	at io.ktor.utils.io.ByteChannel$writeBuffer$1.invoke(ByteChannel.kt:54)
+	at io.ktor.utils.io.ByteChannel$writeBuffer$1.invoke(ByteChannel.kt:54)
+	at io.ktor.utils.io.CloseToken.wrapCause(CloseToken.kt:21)
+	at io.ktor.utils.io.CloseToken.throwOrNull(CloseToken.kt:26)
+	at io.ktor.utils.io.ByteChannel.getWriteBuffer(ByteChannel.kt:54)
+	at io.ktor.utils.io.ByteWriteChannelOperationsKt.writeStringUtf8(ByteWriteChannelOperations.kt:96)
+	at io.ktor.server.sse.DefaultServerSSESession.writeSSE(DefaultServerSSESession.kt:34)
+	at io.ktor.server.sse.DefaultServerSSESession.send(DefaultServerSSESession.kt:22)
+	at io.ktor.server.sse.ServerSSESessionKt$heartbeat$2.invokeSuspend(ServerSSESession.kt:170)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: io.ktor.util.cio.ChannelWriteException: Cannot write to channel
+	at io.ktor.server.netty.cio.NettyHttpResponsePipeline.respondWithFailure(NettyHttpResponsePipeline.kt:100)
+	at io.ktor.server.netty.cio.NettyHttpResponsePipeline.respondWithBodyAndTrailerMessage(NettyHttpResponsePipeline.kt:253)
+	at io.ktor.server.netty.cio.NettyHttpResponsePipeline.access$respondWithBodyAndTrailerMessage(NettyHttpResponsePipeline.kt:24)
+	at io.ktor.server.netty.cio.NettyHttpResponsePipeline$respondWithBodyAndTrailerMessage$1.invokeSuspend(NettyHttpResponsePipeline.kt)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:148)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:141)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:507)
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:182)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1073)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: io.netty.channel.StacklessClosedChannelException: null
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.write(Object, ChannelPromise)(Unknown Source)
