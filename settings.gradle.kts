@@ -37,6 +37,7 @@ plugins {
 
 include(":server")
 include(":composeApp")
+include(":kobweb-site")
 include(":common:auth:api")
 include(":common:auth:data")
 include(":common:auth:compose")
@@ -55,3 +56,4 @@ include(":common:core-presentation")
 include(":common:umbrella")
 include(":common:root:compose")
 include(":common:root:presentation")
+include(":common:demo")
