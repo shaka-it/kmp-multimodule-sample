@@ -18,3 +18,5 @@ captures
 **/xcshareddata/WorkspaceSettings.xcsettings
 **/.env
 **/db-data/
+**/.kobweb/*
+**/.kobweb/conf.yaml
