@@ -1,0 +1,60 @@
+name: Deploy Kobweb site to Pages
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    env:
+      KOBWEB_CLI_VERSION: 0.9.21
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Query Browser Cache ID
+        id: browser-cache-id
+        run: echo "value=$(./gradlew -q :kobweb-site:kobwebBrowserCacheId)" >> $GITHUB_OUTPUT
+      - name: Cache Playwright
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ steps.browser-cache-id.outputs.value }}
+      - name: Fetch kobweb CLI
+        uses: robinraju/release-downloader@v1.10
+        with:
+          repository: varabyte/kobweb-cli
+          tag: v${{ env.KOBWEB_CLI_VERSION }}
+          fileName: kobweb-${{ env.KOBWEB_CLI_VERSION }}.zip
+      - run: unzip kobweb-${{ env.KOBWEB_CLI_VERSION }}.zip
+      - name: Export site (static)
+        run: |
+          cd kobweb-site
+          ../kobweb-${{ env.KOBWEB_CLI_VERSION }}/bin/kobweb export --notty --layout static
+      - name: Upload artifact for Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: kobweb-site/.kobweb/site
+  deploy:
+    needs: export
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
