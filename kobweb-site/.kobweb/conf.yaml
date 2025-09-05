@@ -1,5 +1,5 @@
 site:
-  title: "App"
+  title: "KMP Multimodule Sample"
   basePath: "kmp-multimodule-sample"
 
 server:
