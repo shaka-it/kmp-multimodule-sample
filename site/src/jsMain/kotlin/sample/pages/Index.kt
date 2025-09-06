@@ -123,13 +123,13 @@ fun HomePage() {
 
         Div(
             HomeGridStyle
-                .toModifier()
-                .displayIfAtLeast(Breakpoint.MD)
-                .grid {
-                    rows { repeat(3) { size(1.fr) } }
-                    columns { repeat(5) { size(1.fr) } }
-                }
-                .toAttrs()
+            .toModifier()
+            .displayIfAtLeast(Breakpoint.MD)
+            .grid {
+                rows { repeat(3) { size(1.fr) } }
+                columns { repeat(5) { size(1.fr) } }
+            }
+            .toAttrs()
         ) {
             val sitePalette = ColorMode.current.toSitePalette()
             GridCell(sitePalette.brand.primary, 1, 1, 2, 2)

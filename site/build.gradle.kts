@@ -35,8 +35,6 @@ kotlin {
             implementation(libs.ktor.client.js)
             implementation(libs.ktor.client.negotiation)
             implementation(libs.ktor.serialization.json)
-
-//            implementation(projects.common.demo)
         }
     }
 }
