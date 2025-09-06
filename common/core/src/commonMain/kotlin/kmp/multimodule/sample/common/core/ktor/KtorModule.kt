@@ -38,7 +38,7 @@ internal val ktorModule = module {
             }
 
             defaultRequest {
-                url("http://impressive-wanids-shaka-it-7534c848.koyeb.app")
+                url("https://impressive-wanids-shaka-it-7534c848.koyeb.app")
                 header("Content-Type", "application/json; charset=UTF-8")
             }
         }
