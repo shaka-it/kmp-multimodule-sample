@@ -1,5 +1,6 @@
 package kmp.multimodule.sample.common.posts.data
 
+import kmp.multimodule.sample.common.core.dispatcher.provideIoDispatcher
 import kmp.multimodule.sample.common.posts.api.repository.PostsRepository
 import kmp.multimodule.sample.common.posts.data.ktor.KtorPostsDataSource
 import kmp.multimodule.sample.common.posts.data.mapper.PostMapper
@@ -15,7 +16,7 @@ val postsDataModule = module {
     single {
         SqlDelightPostsDataSource(
             driverFactory = get(),
-            coroutineContext = Dispatchers.Default,
+            ioDispatcher = provideIoDispatcher(),
         )
     }
     single {
@@ -29,7 +30,7 @@ val postsDataModule = module {
             localDataSource = get(),
             postMapper = get(),
             remoteDataSource = get(),
-            coroutineContext = Dispatchers.Default,
+            ioDispatcher = provideIoDispatcher(),
         )
     }
 }

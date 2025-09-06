@@ -2,19 +2,20 @@ package kmp.multimodule.sample.common.auth.data
 
 import kmp.multimodule.sample.common.auth.api.AuthRepository
 import kmp.multimodule.sample.common.auth.api.models.Token
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import kmp.multimodule.sample.common.auth.data.ktor.KtorAuthRemoteDataSource
 import kmp.multimodule.sample.common.auth.data.ktor.KtorLoginRequest
 import kmp.multimodule.sample.common.auth.data.settings.SettingsAuthDataSource
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
 
 class DefaultAuthRepository(
     private val remoteDataSource: KtorAuthRemoteDataSource,
     private val cacheDataSource: SettingsAuthDataSource,
+    private val ioDispatcher: CoroutineDispatcher,
 ) : AuthRepository {
 
     override suspend fun login(login: String, password: String): Token =
-        withContext(Dispatchers.Default) {
+        withContext(ioDispatcher) {
             val token = remoteDataSource.performLogin(
                 request = KtorLoginRequest(
                     login = login,

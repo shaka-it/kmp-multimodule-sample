@@ -3,22 +3,22 @@ package kmp.multimodule.sample.common.posts.data.sqldelight
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
 import kmp.multimodule.sample.common.core.database.DbDriverFactory
+import kmp.multimodule.sample.common.posts.api.models.Post
 import kmp.multimodule.sample.db.AppDatabase
 import kmp.multimodule.sample.db.AppDatabaseQueries
 import kmp.multimodule.sample.db.PostEntity
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
-import kmp.multimodule.sample.common.posts.api.models.Post
-import kotlin.coroutines.CoroutineContext
 
 internal class SqlDelightPostsDataSource(
     private val driverFactory: DbDriverFactory,
-    private val coroutineContext: CoroutineContext,
+    private val ioDispatcher: CoroutineDispatcher,
 ) {
 
     private lateinit var queries: AppDatabaseQueries
 
     suspend fun fetchAllPosts(): Flow<List<PostEntity>> {
-        return getQueries().selectAll().asFlow().mapToList(coroutineContext)
+        return getQueries().selectAll().asFlow().mapToList(ioDispatcher)
     }
 
     suspend fun createPost(post: Post) {
