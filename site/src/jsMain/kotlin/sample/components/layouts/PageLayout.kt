@@ -1,4 +1,4 @@
-package kmp.multimodule.sample.site.components.layouts
+package sample.components.layouts
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -28,9 +28,9 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import kmp.multimodule.sample.site.components.sections.Footer
-import kmp.multimodule.sample.site.components.sections.NavHeader
-import kmp.multimodule.sample.site.toSitePalette
+import sample.components.sections.Footer
+import sample.components.sections.NavHeader
+import sample.toSitePalette
 import kotlinx.browser.document
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.fr

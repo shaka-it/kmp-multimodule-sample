@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.serialization)
 }
 
-group = "kmp.multimodule.sample.site"
+group = "sample"
 version = "1.0-SNAPSHOT"
 
 kobweb {

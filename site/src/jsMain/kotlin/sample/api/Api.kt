@@ -1,4 +1,4 @@
-package kmp.multimodule.sample.site.api
+package sample.api
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.js.Js

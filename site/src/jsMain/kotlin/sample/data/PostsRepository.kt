@@ -1,6 +1,6 @@
-package kmp.multimodule.sample.site.data
+package sample.data
 
-import kmp.multimodule.sample.site.api.Api
+import sample.api.Api
 import kotlinx.serialization.Serializable
 
 @Serializable data class Post(val id: Int, val title: String, val body: String)

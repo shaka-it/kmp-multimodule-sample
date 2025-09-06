@@ -1,4 +1,4 @@
-package kmp.multimodule.sample.site
+package sample
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

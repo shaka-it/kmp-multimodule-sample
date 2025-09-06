@@ -1,4 +1,4 @@
-package kmp.multimodule.sample.site.pages
+package sample.pages
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -26,9 +26,9 @@ import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.text.SpanText
-import kmp.multimodule.sample.site.components.layouts.PageLayoutData
-import kmp.multimodule.sample.site.data.Post
-import kmp.multimodule.sample.site.data.PostsRepository
+import sample.components.layouts.PageLayoutData
+import sample.data.Post
+import sample.data.PostsRepository
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px

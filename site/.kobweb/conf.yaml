@@ -1,6 +1,6 @@
 site:
   title: "App"
-#  basePath: "kmp-multimodule-sample"
+  basePath: "kmp-multimodule-sample"
 
 server:
   files:

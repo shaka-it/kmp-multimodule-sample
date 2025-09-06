@@ -1,4 +1,4 @@
-package kmp.multimodule.sample.site.components.widgets
+package sample.components.widgets
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -6,8 +6,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.setVariable
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.forms.ButtonVars
 import org.jetbrains.compose.web.css.em
-import kmp.multimodule.sample.site.CircleButtonVariant
-import kmp.multimodule.sample.site.UncoloredButtonVariant
+import sample.CircleButtonVariant
+import sample.UncoloredButtonVariant
 
 @Composable
 fun IconButton(onClick: () -> Unit, content: @Composable () -> Unit) {

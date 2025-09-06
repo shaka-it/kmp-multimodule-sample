@@ -1,4 +1,4 @@
-package kmp.multimodule.sample.site.components.sections
+package sample.components.sections
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -50,8 +50,8 @@ import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import kmp.multimodule.sample.site.components.widgets.IconButton
-import kmp.multimodule.sample.site.toSitePalette
+import sample.components.widgets.IconButton
+import sample.toSitePalette
 import org.jetbrains.compose.web.css.AnimationDirection
 import org.jetbrains.compose.web.css.AnimationFillMode
 import org.jetbrains.compose.web.css.AnimationTimingFunction

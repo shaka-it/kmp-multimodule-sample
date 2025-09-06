@@ -1,4 +1,4 @@
-package kmp.multimodule.sample.site.pages
+package sample.pages
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -35,11 +35,11 @@ import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.ColorPalettes
-import kmp.multimodule.sample.site.HeadlineTextStyle
-import kmp.multimodule.sample.site.SubheadlineTextStyle
+import sample.HeadlineTextStyle
+import sample.SubheadlineTextStyle
 import kmp.multimodule.sample.common.demo.DemoApi
-import kmp.multimodule.sample.site.components.layouts.PageLayoutData
-import kmp.multimodule.sample.site.toSitePalette
+import sample.components.layouts.PageLayoutData
+import sample.toSitePalette
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.css.px

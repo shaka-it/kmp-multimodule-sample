@@ -1,4 +1,4 @@
-package kmp.multimodule.sample.site
+package sample
 
 import com.varabyte.kobweb.compose.css.ScrollBehavior
 import com.varabyte.kobweb.compose.css.TextAlign
