@@ -7,7 +7,7 @@ android-targetSdk = "36"
 # Plugins
 composeHotReload = "1.0.0-beta04"
 composeMultiplatform = "1.8.0"
-kobweb = "0.23.1"
+kobweb = "0.23.2"
 
 # Libraries
 kotlin = "2.2.10"
