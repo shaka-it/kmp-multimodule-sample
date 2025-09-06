@@ -23,7 +23,8 @@ private const val COLOR_MODE_KEY = "sample:colorMode"
 
 @InitSilk
 fun initColorMode(ctx: InitSilkContext) {
-    ctx.config.initialColorMode = ColorMode.loadFromLocalStorage(COLOR_MODE_KEY) ?: ColorMode.systemPreference
+    ctx.config.initialColorMode =
+        ColorMode.loadFromLocalStorage(COLOR_MODE_KEY) ?: ColorMode.systemPreference
 }
 
 @InitSilk

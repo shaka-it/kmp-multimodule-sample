@@ -26,19 +26,18 @@ import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.text.SpanText
-import sample.components.layouts.PageLayoutData
-import sample.data.Post
-import sample.data.PostsRepository
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
-import kotlin.collections.forEach
-import kotlin.fold
-import kotlin.runCatching
+import sample.components.layouts.PageLayoutData
+import sample.data.Post
+import sample.data.PostsRepository
 
 @InitRoute
-fun initDemoPage(ctx: InitRouteContext) { ctx.data.add(PageLayoutData("Demo")) }
+fun initDemoPage(ctx: InitRouteContext) {
+    ctx.data.add(PageLayoutData("Demo"))
+}
 
 private sealed interface UiState<out T> {
     object Idle : UiState<Nothing>
@@ -57,7 +56,8 @@ fun DemoPage() {
     fun refresh() = scope.launch {
         state = UiState.Loading
         state = runCatching { PostsRepository.load() }
-            .fold(onSuccess = { UiState.Data(it) },
+            .fold(
+                onSuccess = { UiState.Data(it) },
                 onFailure = { UiState.Error(it.message ?: "Unknown error") })
     }
 
@@ -89,7 +89,7 @@ private fun LoadingCard() {
     Column(
         modifier = Modifier
             .borderRadius(0.5.cssRem)
-            .border(width = 1.px, color = rgba(0,0,0,0.1))
+            .border(width = 1.px, color = rgba(0, 0, 0, 0.1))
             .padding(1.cssRem)
     ) { SpanText("Loading…") }
 }
@@ -99,7 +99,7 @@ private fun ErrorCard(msg: String) {
     Column(
         modifier = Modifier
             .borderRadius(0.5.cssRem)
-            .border(width = 1.px, color = rgba(255,0,0,0.25))
+            .border(width = 1.px, color = rgba(255, 0, 0, 0.25))
             .padding(1.cssRem)
     ) { SpanText("Error: $msg") }
 }
@@ -116,7 +116,7 @@ private fun PostCard(post: Post) {
     Column(
         modifier = Modifier
             .borderRadius(0.75.cssRem)
-            .border(width = 1.px, color = rgba(0,0,0,0.1))
+            .border(width = 1.px, color = rgba(0, 0, 0, 0.1))
             .padding(1.cssRem)
             .gap(0.25.cssRem)
     ) {

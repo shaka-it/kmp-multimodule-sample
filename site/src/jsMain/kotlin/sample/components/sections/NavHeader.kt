@@ -1,6 +1,11 @@
 package sample.components.sections
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import com.varabyte.kobweb.browser.dom.ElementTarget
 import com.varabyte.kobweb.compose.css.functions.clamp
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -9,7 +14,21 @@ import com.varabyte.kobweb.compose.foundation.layout.Spacer
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
-import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.modifiers.animation
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
+import com.varabyte.kobweb.compose.ui.modifiers.display
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+import com.varabyte.kobweb.compose.ui.modifiers.gap
+import com.varabyte.kobweb.compose.ui.modifiers.height
+import com.varabyte.kobweb.compose.ui.modifiers.onAnimationEnd
+import com.varabyte.kobweb.compose.ui.modifiers.onClick
+import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.modifiers.setVariable
+import com.varabyte.kobweb.compose.ui.modifiers.translateX
+import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.icons.CloseIcon
 import com.varabyte.kobweb.silk.components.icons.HamburgerIcon
@@ -31,7 +50,13 @@ import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.AnimationDirection
+import org.jetbrains.compose.web.css.AnimationFillMode
+import org.jetbrains.compose.web.css.AnimationTimingFunction
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.ms
+import org.jetbrains.compose.web.css.percent
 import sample.components.widgets.IconButton
 import sample.toSitePalette
 
@@ -54,10 +79,14 @@ private fun MenuItems() {
 @Composable
 private fun ColorModeButton() {
     var colorMode by ColorMode.currentState
-    IconButton(onClick = { colorMode = colorMode.opposite },) {
+    IconButton(onClick = { colorMode = colorMode.opposite }) {
         if (colorMode.isLight) MoonIcon() else SunIcon()
     }
-    Tooltip(ElementTarget.PreviousSibling, "Toggle color mode", placement = PopupPlacement.BottomRight)
+    Tooltip(
+        ElementTarget.PreviousSibling,
+        "Toggle color mode",
+        placement = PopupPlacement.BottomRight
+    )
 }
 
 @Composable
@@ -103,12 +132,19 @@ fun NavHeader() {
     Row(NavHeaderStyle.toModifier(), verticalAlignment = Alignment.CenterVertically) {
         Link("https://kobweb.varabyte.com") {
             // Block display overrides inline display of the <img> tag, so it calculates centering better
-            Image("/kobweb-logo.png", "Kobweb Logo", Modifier.height(2.cssRem).display(DisplayStyle.Block))
+            Image(
+                "/kobweb-logo.png",
+                "Kobweb Logo",
+                Modifier.height(2.cssRem).display(DisplayStyle.Block)
+            )
         }
 
         Spacer()
 
-        Row(Modifier.gap(1.5.cssRem).displayIfAtLeast(Breakpoint.MD), verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            Modifier.gap(1.5.cssRem).displayIfAtLeast(Breakpoint.MD),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             MenuItems()
             ColorModeButton()
         }
@@ -123,13 +159,15 @@ fun NavHeader() {
             var menuState by remember { mutableStateOf(SideMenuState.CLOSED) }
 
             ColorModeButton()
-            HamburgerButton(onClick =  { menuState = SideMenuState.OPEN })
+            HamburgerButton(onClick = { menuState = SideMenuState.OPEN })
 
             if (menuState != SideMenuState.CLOSED) {
                 SideMenu(
                     menuState,
                     close = { menuState = menuState.close() },
-                    onAnimationEnd = { if (menuState == SideMenuState.CLOSING) menuState = SideMenuState.CLOSED }
+                    onAnimationEnd = {
+                        if (menuState == SideMenuState.CLOSING) menuState = SideMenuState.CLOSED
+                    }
                 )
             }
         }
@@ -168,7 +206,10 @@ private fun SideMenu(menuState: SideMenuState, close: () -> Unit, onAnimationEnd
                 horizontalAlignment = Alignment.End
             ) {
                 CloseButton(onClick = { close() })
-                Column(Modifier.padding(right = 0.75.cssRem).gap(1.5.cssRem).fontSize(1.4.cssRem), horizontalAlignment = Alignment.End) {
+                Column(
+                    Modifier.padding(right = 0.75.cssRem).gap(1.5.cssRem).fontSize(1.4.cssRem),
+                    horizontalAlignment = Alignment.End
+                ) {
                     MenuItems()
                 }
             }
