@@ -19,6 +19,8 @@ import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.loadFromLocalStorage
 import com.varabyte.kobweb.silk.theme.colors.saveToLocalStorage
 import com.varabyte.kobweb.silk.theme.colors.systemPreference
+import kmp.multimodule.sample.common.core.PlatformConfiguration
+import kmp.multimodule.sample.common.umbrella.core.PlatformSDK
 import org.jetbrains.compose.web.css.vh
 
 private const val COLOR_MODE_KEY = "sample:colorMode"
@@ -40,6 +42,7 @@ fun initStyles(ctx: InitSilkContext) {
 @App
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
+    PlatformSDK.init(configuration = PlatformConfiguration())
     SilkApp {
         val colorMode = ColorMode.current
         LaunchedEffect(colorMode) {

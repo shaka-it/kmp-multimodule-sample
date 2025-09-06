@@ -35,4 +35,12 @@ class KtorPostsDataSource(
             }
         }.body()
     }
+
+    suspend fun fetchDemoPosts(): List<KtorFetchPostResponse> {
+        return httpClient.get {
+            url {
+                path("demo-posts")
+            }
+        }.body()
+    }
 }

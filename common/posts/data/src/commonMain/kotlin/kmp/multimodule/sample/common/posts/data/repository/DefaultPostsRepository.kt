@@ -24,9 +24,9 @@ internal class DefaultPostsRepository(
             .flowOn(coroutineContext)
 
     override suspend fun refreshPosts() = withContext(coroutineContext) {
-        val responses = remoteDataSource.fetchAllPosts().map(postMapper::toPost)
+        val response = remoteDataSource.fetchAllPosts().map(postMapper::toPost)
         localDataSource.clearAllPosts()
-        responses.forEach { post ->
+        response.forEach { post ->
             localDataSource.createPost(post)
         }
     }
@@ -43,5 +43,9 @@ internal class DefaultPostsRepository(
 
     override suspend fun clearCache() = withContext(coroutineContext) {
         localDataSource.clearAllPosts()
+    }
+
+    override suspend fun fetchDemoPosts(): List<Post> = withContext(coroutineContext) {
+        remoteDataSource.fetchDemoPosts().map(postMapper::toPost)
     }
 }

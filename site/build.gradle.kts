@@ -23,6 +23,12 @@ kotlin {
     configAsKobwebApplication("sample")
 
     sourceSets {
+        commonMain.dependencies {
+            implementation(projects.common.core)
+            implementation(projects.common.posts.api)
+            implementation(projects.common.umbrella)
+        }
+
         jsMain.dependencies {
             implementation(libs.compose.runtime)
             implementation(libs.compose.html.core)
@@ -30,13 +36,6 @@ kotlin {
             implementation(libs.kobweb.silk)
             implementation(libs.silk.icons.fa)
             implementation(libs.kobwebx.markdown)
-
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.js)
-            implementation(libs.ktor.client.negotiation)
-            implementation(libs.ktor.serialization.json)
-
-            implementation(projects.common.demo)
         }
     }
 }

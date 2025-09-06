@@ -8,6 +8,8 @@ internal fun Project.configureKotlinMultiplatform(
     extension: KotlinMultiplatformExtension,
 ) = extension.apply {
 
+    js(IR) { browser() }
+
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         binaries.executable()

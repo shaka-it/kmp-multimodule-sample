@@ -8,4 +8,5 @@ interface PostsRepository {
     suspend fun refreshPosts()
     suspend fun createPost(post: Post)
     suspend fun clearCache()
+    suspend fun fetchDemoPosts(): List<Post>
 }

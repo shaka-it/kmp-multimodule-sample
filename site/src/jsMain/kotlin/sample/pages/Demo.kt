@@ -26,13 +26,14 @@ import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.text.SpanText
+import kmp.multimodule.sample.common.core.di.Inject
+import kmp.multimodule.sample.common.posts.api.models.Post
+import kmp.multimodule.sample.common.posts.api.repository.PostsRepository
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
 import sample.components.layouts.PageLayoutData
-import sample.data.Post
-import sample.data.PostsRepository
 
 @InitRoute
 fun initDemoPage(ctx: InitRouteContext) {
@@ -52,10 +53,11 @@ private sealed interface UiState<out T> {
 fun DemoPage() {
     var state by remember { mutableStateOf<UiState<List<Post>>>(UiState.Loading) }
     val scope = rememberCoroutineScope()
+    val postsRepository = Inject.instance<PostsRepository>()
 
     fun refresh() = scope.launch {
         state = UiState.Loading
-        state = runCatching { PostsRepository.load() }
+        state = runCatching { postsRepository.fetchDemoPosts() }
             .fold(
                 onSuccess = { UiState.Data(it) },
                 onFailure = { UiState.Error(it.message ?: "Unknown error") })
@@ -121,6 +123,6 @@ private fun PostCard(post: Post) {
             .gap(0.25.cssRem)
     ) {
         SpanText("#${post.id}: ${post.title}")
-        SpanText(post.body)
+        SpanText(post.description)
     }
 }

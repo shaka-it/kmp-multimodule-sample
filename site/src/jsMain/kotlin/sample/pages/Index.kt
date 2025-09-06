@@ -1,7 +1,6 @@
 package sample.pages
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import com.varabyte.kobweb.compose.css.StyleVariable
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -35,7 +34,6 @@ import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.ColorPalettes
-import kmp.multimodule.sample.common.demo.DemoApi
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.css.px
@@ -87,9 +85,6 @@ fun initHomePage(ctx: InitRouteContext) {
 @Layout(".components.layouts.PageLayout")
 @Composable
 fun HomePage() {
-    val hello = remember { DemoApi.greet("Kobweb") }
-    val sum = remember { DemoApi.add(2, 3) }
-
     Row(HeroContainerStyle.toModifier()) {
         Column(Modifier.gap(2.cssRem)) {
             SpanText(
@@ -101,11 +96,11 @@ fun HomePage() {
                         }
                     )
                     .textShadow(0.px, 0.px, 0.5.cssRem, Colors.Gray),
-                text = hello,
+                text = "Kobweb Sample in KMP Project",
             )
             SpanText(
                 modifier = SubheadlineTextStyle.toModifier(),
-                text = "$hello. 2 + 3 = $sum",
+                text = "Kobweb Sample in KMP Project",
             )
         }
 
