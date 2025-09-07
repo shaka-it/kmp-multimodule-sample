@@ -1,11 +1,12 @@
 # KMP Multimodule Sample
 
 A fully modular Kotlin Multiplatform (KMP) project showcasing:
-- **Shared business logic** and API definitions in `common` modules
-- **Multiplatform Compose UI** targeting Android, iOS, Desktop (JVM) and Web (JS/WASM)
-- **Ktor backend** with PostgreSQL persistence via JetBrains Exposed
-- **Modular, feature-based architecture** with layered modules (api, data, presentation, compose)
-- **Navigation** via Decompose and **Dependency Injection** via Koin
+- **Shared business logic** and API definitions in `common` modules compiled for JVM, Native, and JS.
+- **Multiplatform Compose UI** targeting Android, iOS, Desktop (JVM), and Web (JS/WASM).
+- **Kobweb site** reusing shared business logic for a DOM-based web application.
+- **Ktor backend** with PostgreSQL persistence via JetBrains Exposed.
+- **Modular, feature-based architecture** with layered modules (api, data, presentation, compose).
+- **Navigation** via Decompose and **Dependency Injection** via Koin.
 
 ---
 
@@ -21,10 +22,13 @@ A fully modular Kotlin Multiplatform (KMP) project showcasing:
 
 This repository demonstrates a complete Kotlin Multiplatform setup in 2025: one codebase, many platforms. You get:
 
-- A **`common`** layer for business logic, models and feature wiring.
+- A `common` layer for business logic, models and feature wiring compiled for JVM, Native, and JS so the logic can be shared across all clients, including the Kobweb site.
 - A **Compose Multiplatform** client (`composeApp`) for Android, iOS, Desktop & Web.
+- A **Kobweb** site (`site`) for building a DOM-based web application that reuses the `common` business logic through the JS target.
 - A **Ktor** server (`server`) using **PostgreSQL** and **Exposed** for data.
 - **Feature modules** (e.g. `auth`, `posts`, `profile`) each split into `api`, `data`, `presentation`, and `compose` submodules as needed.
+
+[Kobweb](https://github.com/varabyte/kobweb) is a Kotlin framework for building DOM-based web apps using Compose syntax. It is ideal for sites and applications that benefit from server-side routing, theming, and component abstractions. For a comparison with Compose Multiplatform’s canvas-based web approach, see [What about Compose for Web Canvas?](https://github.com/varabyte/kobweb#what-about-compose-for-web-canvas).
 
 User flows, data access, UI and navigation are all implemented in Kotlin, maximizing code reuse and consistency.
 
@@ -55,27 +59,27 @@ User flows, data access, UI and navigation are all implemented in Kotlin, maximi
 
 ### Client Applications
 - **`composeApp`**  
-  Multiplatform Compose application targeting:
-  - Android (`androidMain`)
-  - iOS (`iosMain`)
-  - Desktop JVM (`desktopMain`)
+  Multiplatform Compose application targeting:  
+  - Android (`androidMain`)  
+  - iOS (`iosMain`)  
+  - Desktop JVM (`desktopMain`)  
   - JS/WASM (`wasmJsMain`)  
   Uses Decompose for navigation and Koin for DI.
 - **`iosApp`**  
   Xcode project to launch the iOS framework produced by `composeApp`.
-- **`kotlin-js-store`**  
-  Standalone JS/React-style web client (WASM/JS) built from Compose sources.
+- **`site`**  
+  Kobweb-based DOM web application that reuses the shared business logic through the JS target. Ideal for web experiences requiring server-side routing, theming, and component abstractions.
 
 ### Server
 - **`server`**  
   Ktor-based backend exposing REST endpoints.  
-  Persistence via PostgreSQL using JetBrains **Exposed** modules
+  Persistence via PostgreSQL using JetBrains Exposed modules.
 
 ---
 
 ## Tech Stack
-- **Language:** Kotlin
-- **UI:** Compose Multiplatform, Decompose (navigation)
+- **Language:** Kotlin (JVM, Native, JS)
+- **UI:** Compose Multiplatform, Kobweb (DOM web), Decompose (navigation)
 - **DI:** Koin
 - **Networking:** Ktor client & server
 - **Database:** SQLDelight (local), Exposed + PostgreSQL (server)
@@ -124,10 +128,14 @@ docker compose down         # stop & remove containers
 
 ## 📸 UX
 
-**Client:**
+**KMP Client:**
 
 <img width="1920" height="1080" alt="KMP 001" src="https://github.com/user-attachments/assets/0c28e6e4-5287-444d-87d2-064f9f966a38" />
 
 **Demo video:**
 
 https://github.com/user-attachments/assets/a7770320-2bc3-41b1-8f3d-f9559dcd4aab
+
+**Kobweb Client:**
+
+https://shaka-it.github.io/kmp-multimodule-sample/
